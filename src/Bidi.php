@@ -139,15 +139,17 @@ class Bidi
      * Reverse the RLT substrings using the Bidirectional Algorithm (http://unicode.org/reports/tr9/).
      * @param array $ta array of characters composing the string.
      * @param bool $forceRtl if 'R' forces RTL, if 'L' forces LTR
-     * @return string
+     * @return array
      * @author Nicola Asuni
      * @since 2.4.000 (2008-03-06)
      */
     public function utf8Bidi($ta, $forceRtl = false)
     {
-        global $unicode, $unicode_mirror, $unicode_arlet, $laa_array, $diacritics;
-
-        require_once(__DIR__ . '/unicode_data.php');
+        $unicode = UnicodeData::$unicode;
+        $unicode_mirror = UnicodeData::$unicode_mirror;
+        $unicode_arlet = UnicodeData::$unicode_arlet;
+        $laa_array = UnicodeData::$laa_array;
+        $diacritics = UnicodeData::$diacritics;
 
         // paragraph embedding level
         $pel = 0;
@@ -545,13 +547,13 @@ class Bidi
             } else {
                 $prevChar = false;
             }
-            
+
             if (($i + 1) < $numChars) {
                 $nextChar = $charData[($i + 1)];
             } else {
                 $nextChar = false;
             }
-            
+
             if ($unicode[$thisChar['char']] == 'AL') {
                 $x = $thisChar['x'];
                 if ($x > 0) {

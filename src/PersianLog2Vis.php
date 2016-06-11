@@ -17,7 +17,7 @@ namespace Ghost098\PersianLog2Vis;
 
 /**
  * Class PersianLog2Vis
- * 
+ *
  * @package Ghost098\PersianLog2Vis
  */
 class PersianLog2Vis
@@ -26,16 +26,11 @@ class PersianLog2Vis
      * A function to change persian or arabic text from its logical condition to visual
      *
      * @author        Omid Mottaghi Rad
-     * @param        string    Main text you want to change it
-     * @param        boolean    Apply e'raab characters or not? default is true
-     * @param        boolean    Which encoding? default it "utf8"
-     * @param        boolean    Do you want to change special characters like "allah" or "lam+alef" or "lam+hamza", default is true
+     * @param $str string Main text you want to change it
      */
     public static function persian_log2vis(&$str)
     {
-        require_once(__DIR__ . '/bidi.php');
-
-        $bidi = new bidi();
+        $bidi = new Bidi();
 
         $text = explode("\n", $str);
 
