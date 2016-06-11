@@ -28,7 +28,7 @@ class PersianLog2Vis
      * @author        Omid Mottaghi Rad
      * @param $str string Main text you want to change it
      */
-    public static function persian_log2vis(&$str)
+    public static function correct(&$str)
     {
         $bidi = new Bidi();
 
